@@ -1,48 +1,50 @@
+const backendDomain = "http://localhost:8080";
 
-const backendDomain = "http://localhost:8080"
-
-const summaryApi ={
-    signUp : {
-        url : `${backendDomain}/api/signup`,
-        method : "post"
+const summaryApi = {
+    signUp: {
+        url: `${backendDomain}/api/signup`,
+        method: "post"
     },
-    signIn : {
-        url : `${backendDomain}/api/signin`,
-        method : "post"
+    signIn: {
+        url: `${backendDomain}/api/signin`,
+        method: "post"
     },
-    current_user : {
-        url : `${backendDomain}/api/user-details`,
-        method : "get"
+    current_user: {
+        url: `${backendDomain}/api/user-details`,
+        method: "get"
     },
-    logout_user : {
-        url : `${backendDomain}/api/userLogout`,
-        method : "get"
+    logout_user: {
+        url: `${backendDomain}/api/userLogout`,
+        method: "get"
     },
-    allUser : {
-        url : `${backendDomain}/api/all-users`,
-        method : "get"
+    allUser: {
+        url: `${backendDomain}/api/all-users`,
+        method: "get"
     },
-    updateUser : {
-        url : `${backendDomain}/api/update-user`,
-        method : "post"
+    updateUser: {
+        url: `${backendDomain}/api/update-user`,
+        method: "post"
     },
-    uploadProduct : {
-        url : `${backendDomain}/api/upload-product`,
-        method : "post"
+    uploadProduct: {
+        url: `${backendDomain}/api/upload-product`,
+        method: "post"
     },
-    allproduct : {
-        url : `${backendDomain}/api/get-products`,
-        method : "get"
+    allproduct: {
+        url: `${backendDomain}/api/get-products`,
+        method: "get"
     },
-    updateProduct : {
-        url : `${backendDomain}/api/update-product`,
-        method : "post"
+    updateProduct: {
+        url: `${backendDomain}/api/update-product`,
+        method: "post"
     },
-    catagoryProduct : {
-        url : `${backendDomain}/api/get-catagoryProduct`,
-        method : "get"
+    categoryProduct: {
+        url: `${backendDomain}/api/get-categoryProduct`,
+        method: "get"
+    },
+    categoryWiseProduct: {
+        url: `${backendDomain}/api/category-product`,
+        method: "post"
     }
-}
+};
 
-
-export default summaryApi
+export default summaryApi;

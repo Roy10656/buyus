@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
 import { IoMdClose } from "react-icons/io";
-import productCatagory from '../helpers/prroductCatagory';
+import productCategory from '../helpers/productCatagory';
 import { FaCloudUploadAlt } from "react-icons/fa";
 import uploadImage from '../helpers/uploadImage';
 import { MdDelete } from "react-icons/md";
@@ -19,7 +18,7 @@ const AdminEditProduct = (
     ...productData,
     productName: productData?.productName,
     brandName: productData?.brandName,
-    productCatagory: productData?.productCatagory,
+    productCategory: productData?.productCategory,
     productImage: productData?.productImage || [],
     description: productData?.description,
     price: productData?.price,
@@ -133,16 +132,16 @@ const AdminEditProduct = (
                         required
                         onChange={handleOnChange}
                     />
-                    <label htmlFor='productCatagory' className='mt-3'>Product Category :</label>
+                    <label htmlFor='productCategory' className='mt-3'>Product Category :</label>
                     <select
-                        name='productCatagory'
-                        value={data.productCatagory}
+                        name='productCategory'
+                        value={data.productCategory}
                         className='bg-slate-100 p-2 border rounded'
                         onChange={handleOnChange}
                         required
                     >
-                        <option value="" >Select Option</option>
-                        {productCatagory.map((el, index) => (
+                        <option value="">Select Option</option>
+                        {productCategory.map((el, index) => (
                             <option value={el.value} key={el.value + index}>{el.label}</option>
                         ))}
                     </select>
@@ -159,22 +158,19 @@ const AdminEditProduct = (
                     <div>
                         {data?.productImage[0] ? (
                             <div className='flex items-center gap-2'>
-                                {
-                                    data.productImage.map((el, index) => (
-                                        <div className='relative group'>
-                                            <img src={el} 
+                                {data.productImage.map((el, index) => (
+                                    <div className='relative group' key={index}>
+                                        <img src={el} 
                                             alt={`Product ${index}`} 
                                             width={80} 
                                             height={80} 
-                                            className='bg-slate-100 border' 
-                                            key={index} />
+                                            className='bg-slate-100 border' />
 
-                                            <div className='absolute  bottom-0 right-0 p-1 bg-sky-500 text-white rounded-full cursor-pointer hidden group-hover:block' onClick={() => handleDeleteProductImage(index)}>
-                                                <MdDelete />
-                                            </div>
+                                        <div className='absolute bottom-0 right-0 p-1 bg-sky-500 text-white rounded-full cursor-pointer hidden group-hover:block' onClick={() => handleDeleteProductImage(index)}>
+                                            <MdDelete />
                                         </div>
-                                    ))
-                                }
+                                    </div>
+                                ))}
                             </div>
                         ) : (
                             <p className='text-red-600 text-xs'>*Please Upload Product Image</p>
@@ -206,16 +202,15 @@ const AdminEditProduct = (
                     />
 
                     <label htmlFor='description'>Product Description :</label>
-                    <textarea className='h-28 bg-slate-100 border resize-none p-2 ' 
-                    id='description' 
-                    name='description' 
-                    value={data.description}
-                    required
-                    placeholder='Enter Product Description' rows={3} 
-                    onChange={handleOnChange}>
-                        
+                    <textarea className='h-28 bg-slate-100 border resize-none p-2' 
+                        id='description' 
+                        name='description' 
+                        value={data.description}
+                        required
+                        placeholder='Enter Product Description' 
+                        rows={3} 
+                        onChange={handleOnChange}>
                     </textarea>
-
 
                     <button className='px-3 py-1 bg-sky-500 rounded-full font-bold text-white mb-2 mt-10 hover:bg-sky-600 transition-all'>Update Product</button>
                 </form>
@@ -224,4 +219,4 @@ const AdminEditProduct = (
   )
 }
 
-export default AdminEditProduct
+export default AdminEditProduct;

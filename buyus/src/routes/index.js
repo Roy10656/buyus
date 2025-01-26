@@ -7,45 +7,44 @@ import SignUp from "../Pages/SignUp";
 import AdminPanel from "../Pages/AdminPanel";
 import Allusers from "../Pages/Allusers.js";
 import Allproducts from "../Pages/Allproducts.js";
-import CatagoryProduct from "../Pages/CatagoryProduct.js";
-
+import CategoryProduct from "../Pages/CategoryProduct.js";
 
 const router = createBrowserRouter([
     {
-        path : "/",
-        element : <App />,
-        children : [
+        path: "/",
+        element: <App />,
+        children: [
             {
-                path : "/",
-                element : <Home />
+                path: "/",
+                element: <Home />
             },
             {
-                path :"login",
-                element : <Login />
+                path: "login",
+                element: <Login />
             },
             {
-                path : "forgot-password",
-                element : <ForgotPassword />
+                path: "forgot-password",
+                element: <ForgotPassword />
             },
             {
-                path : "sign-up",
-                element : <SignUp />
+                path: "sign-up",
+                element: <SignUp />
             },
             {
-                path : "product-catagory/:catagoryName",
-                element : <CatagoryProduct />
+                path: "product-category/:categoryName",
+                element: <CategoryProduct />
             },
             {
-                path : "admin-panel",
-                element : <AdminPanel />,
-                children : [
+                path: "admin-panel",
+                element: <AdminPanel />,
+                children: [
                     {
-                        path : "all-users",
-                        element : <Allusers />,
+                        path: "all-users",
+                        element: <Allusers />,
                     },
                     {
-                        path : "all-products",
-                        element : <Allproducts />
+                        path: "all-products",
+                        element: <Allproducts />
                     }
                 ]
             }
@@ -53,4 +52,4 @@ const router = createBrowserRouter([
     }
 ])
 
-export default router
+export default router;

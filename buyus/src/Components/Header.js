@@ -9,6 +9,8 @@ import summaryApi from '../common';
 import { toast } from 'react-toastify'
 import { setUserDetails } from '../store/userSlice';
 import ROLE from '../common/role';
+import { FaRegUserCircle } from "react-icons/fa";
+
 
 const Header = () => {
 
@@ -39,11 +41,11 @@ const Header = () => {
 
 
   return (
-    <header className='h-16 drop-shadow-xl bg-gradient-to-r from-sky-300 to-purple-600 w-full'> 
+    <header className='h-12 drop-shadow-xl bg-gradient-to-r from-sky-300 to-purple-600 w-full'> 
       <div className='h-full w-full flex items-center px-3 justify-between '>
         <div className=''>
           <Link to={"/"}>
-          <Logo w={150} h={2} />
+          <Logo w={130} h={1} />
           </Link>
         </div>
         {/*Search Section */}
@@ -104,10 +106,13 @@ const Header = () => {
           <div className=' rounded-full  hover:scale-110 '>
             {
               user?._id ? (
-                <button onClick={handleLogout} className='px-3 py-1 max-h-6 rounded-full hover:text-white hover:bg-sky-600 flex items-center focus-within:shadow-xl text-black bg-sky-300 transition-all'>Logout</button>
+                <button onClick={handleLogout} className='px-3 py-1 max-h-6 rounded-md hover:text-white hover:bg-sky-600 flex items-center focus-within:shadow-xl text-black bg-sky-300 transition-all'>Logout</button>
               ) : (
                 <Link to={"/login"}>
-              <button className='w-20 bg-sky-200 hover:bg-sky-600 rounded-full hover:text-white'>Login</button>
+              <button className='w-20 bg-sky-200 hover:bg-sky-600 rounded-md hover:text-white flex items-center justify-center focus-within:shadow-xl text-black transition-all gap-2'>
+                <FaRegUserCircle />
+                Login
+                </button>
             </Link>
               )
             }

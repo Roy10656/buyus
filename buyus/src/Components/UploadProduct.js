@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
 import { IoMdClose } from "react-icons/io";
-import productCatagory from '../helpers/prroductCatagory';
+import productCategory from '../helpers/productCatagory';
 import { FaCloudUploadAlt } from "react-icons/fa";
 import uploadImage from '../helpers/uploadImage';
 import { MdDelete } from "react-icons/md";
 import summaryApi from '../common';
 import { toast } from 'react-toastify';
 
-
-
-
 const UploadProduct = ({ onClose, fetchData }) => {
     const [data, setData] = useState({
         productName: "",
         brandName: "",
-        productCatagory: "",
+        productCategory: "",
         productImage: [],
         description: "",
         price: "",
@@ -53,7 +50,7 @@ const UploadProduct = ({ onClose, fetchData }) => {
 
     const handleDeleteProductImage = async(index) => {
         const newProductImage  = [...data.productImage]
-        newProductImage.splice(index,1)
+        newProductImage.splice(index, 1)
 
         setData(prevData => ({
             ...prevData,
@@ -96,7 +93,6 @@ const UploadProduct = ({ onClose, fetchData }) => {
             console.error('Failed to upload product:', error);
         }
     };
-    
 
     return (
         <div className='bg-slate-200/35 fixed w-full h-full top-0 left-0 right-0 bottom-0 flex justify-center items-center'>
@@ -130,16 +126,16 @@ const UploadProduct = ({ onClose, fetchData }) => {
                         required
                         onChange={handleOnChange}
                     />
-                    <label htmlFor='productCatagory' className='mt-3'>Product Category :</label>
+                    <label htmlFor='productCategory' className='mt-3'>Product Category :</label>
                     <select
-                        name='productCatagory'
-                        value={data.productCatagory}
+                        name='productCategory'
+                        value={data.productCategory}
                         className='bg-slate-100 p-2 border rounded'
                         required
                         onChange={handleOnChange}
                     >
-                        <option value="" >Select Option</option>
-                        {productCatagory.map((el, index) => (
+                        <option value="">Select Option</option>
+                        {productCategory.map((el, index) => (
                             <option value={el.value} key={el.value + index}>{el.label}</option>
                         ))}
                     </select>
@@ -156,22 +152,19 @@ const UploadProduct = ({ onClose, fetchData }) => {
                     <div>
                         {data?.productImage[0] ? (
                             <div className='flex items-center gap-2'>
-                                {
-                                    data.productImage.map((el, index) => (
-                                        <div className='relative group'>
-                                            <img src={el} 
+                                {data.productImage.map((el, index) => (
+                                    <div className='relative group' key={index}>
+                                        <img src={el} 
                                             alt={`Product ${index}`} 
                                             width={80} 
                                             height={80} 
-                                            className='bg-slate-100 border' 
-                                            key={index} />
+                                            className='bg-slate-100 border' />
 
-                                            <div className='absolute  bottom-0 right-0 p-1 bg-sky-500 text-white rounded-full cursor-pointer hidden group-hover:block' onClick={() => handleDeleteProductImage(index)}>
-                                                <MdDelete />
-                                            </div>
+                                        <div className='absolute bottom-0 right-0 p-1 bg-sky-500 text-white rounded-full cursor-pointer hidden group-hover:block' onClick={() => handleDeleteProductImage(index)}>
+                                            <MdDelete />
                                         </div>
-                                    ))
-                                }
+                                    </div>
+                                ))}
                             </div>
                         ) : (
                             <p className='text-red-600 text-xs'>*Please Upload Product Image</p>
@@ -203,16 +196,15 @@ const UploadProduct = ({ onClose, fetchData }) => {
                     />
 
                     <label htmlFor='description'>Product Description :</label>
-                    <textarea className='h-28 bg-slate-100 border resize-none p-2 ' 
-                    id='description' 
-                    name='description' 
-                    placeholder='Enter Product Description' rows={3} 
-                    value={data.description}
-                    required
-                    onChange={handleOnChange}>
-                        
+                    <textarea className='h-28 bg-slate-100 border resize-none p-2' 
+                        id='description' 
+                        name='description' 
+                        placeholder='Enter Product Description' 
+                        rows={3} 
+                        value={data.description}
+                        required
+                        onChange={handleOnChange}>
                     </textarea>
-
 
                     <button className='px-3 py-1 bg-sky-500 rounded-full font-bold text-white mb-2 mt-10 hover:bg-sky-600 transition-all'>Upload Product</button>
                 </form>

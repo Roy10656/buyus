@@ -1,4 +1,4 @@
-const productCatagory =[
+const productCategory =[
     {
         id : 1,
         label : "Airpodes",
@@ -63,4 +63,4 @@ const productCatagory =[
 
 
 
-export default productCatagory
+export default productCategory
